@@ -7,6 +7,9 @@ interface CounterProps {
 interface CounterState {
   count: number;
 }
+
+// type annotation for this.props
+// type annotation for this.setState() and return type
 export default class App extends Component<CounterProps, CounterState> {
   constructor(props: CounterProps) {
     super(props);
@@ -15,7 +18,13 @@ export default class App extends Component<CounterProps, CounterState> {
     };
   }
 
+  // type annotation for this.state
   state: CounterState;
+
+  // we have to explicitly annotate lifeCycle method arguments
+  componentDidUpdate(prevProps: CounterProps, prevState: CounterState) {
+    console.log("I am updating");
+  }
 
   render() {
     const { count } = this.state;
