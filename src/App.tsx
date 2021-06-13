@@ -1,27 +1,37 @@
 import React, { Component } from "react";
 
-export default class App extends Component {
-  constructor(props: any) {
+interface CounterProps {
+  defaultCount: number;
+}
+
+interface CounterState {
+  count: number;
+}
+export default class App extends Component<CounterProps, CounterState> {
+  constructor(props: CounterProps) {
     super(props);
     this.state = {
       count: props.defaultCount,
     };
   }
+
+  state: CounterState;
+
   render() {
-    const { count }: any = this.state;
+    const { count } = this.state;
     return (
       <div>
         <h1>Count {count}</h1>
         <button
           onClick={() => {
-            this.setState(({ count }: any) => ({ count: count - 1 }));
+            this.setState(({ count }) => ({ count: count - 1 }));
           }}
         >
           -
         </button>
         <button
           onClick={() => {
-            this.setState(({ count }: any) => ({ count: count + 1 }));
+            this.setState(({ count }) => ({ count: count + 1 }));
           }}
         >
           +
